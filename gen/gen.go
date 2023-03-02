@@ -19,7 +19,7 @@ import (
 
 type {{.Type}} struct {}
 
-func (v *GenerationService) GetGeneratedData(initialString string) string {
+func (v *EncodingService) GetEncodedString(initialString string) string {
 	return b64.StdEncoding.EncodeToString([]byte(initialString))
 }
 `

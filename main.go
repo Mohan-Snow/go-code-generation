@@ -6,10 +6,10 @@ import (
 )
 
 type Service interface {
-	GetGeneratedData(string) string
+	GetEncodedString(string) string
 }
 
 func main() {
-	var s Service = &g.GenerationService{}
-	fmt.Println(s.GetGeneratedData("my_password"))
+	var s Service = &g.EncodingService{}
+	fmt.Println(s.GetEncodedString("my_password"))
 }

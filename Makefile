@@ -1,6 +1,6 @@
 .PHONY: generate
 generate:
-	@TYPE=GenerationService OUTPUT=../generated/service.go go generate gen/gen.go
+	@TYPE=EncodingService OUTPUT=../generated/service.go go generate gen/gen.go
 
 .PHONY: run
 run:
