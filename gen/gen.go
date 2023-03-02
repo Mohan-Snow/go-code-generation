@@ -24,21 +24,26 @@ func (v *GenerationService) GetGeneratedData(initialString string) string {
 }
 `
 
+const (
+	TypeKey   = "TYPE"
+	OutputKey = "OUTPUT"
+)
+
 func main() {
-	templateVar, err := template.New("").Parse(templateVar)
+	templateVar, err := template.New("").Parse(templateVar) // create Template struct by custom template schema
 	if err != nil {
 		log.Fatal(err)
 	}
 	buffer := &bytes.Buffer{}
-	err = templateVar.Execute(buffer, struct {
+	err = templateVar.Execute(buffer, struct { // write into buffer
 		Type string
 	}{
-		Type: os.Getenv("TYPE"),
+		Type: os.Getenv(TypeKey), // retrieve type value (specified in Makefile) by TYPE key
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = ioutil.WriteFile(os.Getenv("OUTPUT"), buffer.Bytes(), 0644)
+	err = ioutil.WriteFile(os.Getenv(OutputKey), buffer.Bytes(), 0644) // generate data reed from buffer in the specified directory
 	if err != nil {
 		log.Fatal(err)
 	}
