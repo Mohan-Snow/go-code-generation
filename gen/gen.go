@@ -43,7 +43,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = ioutil.WriteFile(os.Getenv(OutputKey), buffer.Bytes(), 0644) // generate data reed from buffer in the specified directory
+	err = ioutil.WriteFile(os.Getenv(OutputKey), buffer.Bytes(), 0644) // generate data reed from buffer (slice of bytes) in the specified directory
 	if err != nil {
 		log.Fatal(err)
 	}
